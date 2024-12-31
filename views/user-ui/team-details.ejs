@@ -1,0 +1,58 @@
+<%- include('../layout/ui-header.ejs') %>
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper ">
+        <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
+        <div class="container z-index-common">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">David Smith</h1>
+                <div class="breadcumb-menu-wrap">
+                    <i class="far fa-home-lg"></i>
+                    <ul class="breadcumb-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Doctors Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+    Team Details
+    ==============================-->
+    <section class="vs-details-wrapper space-top space-md-bottom">
+        <div class="container">
+            <div class="row gx-40 align-items-center">
+                <div class="col-lg-5">
+
+                    <div class="member-header mb-40 overflow-hidden rounded-3 position-relative">
+                        <div class="member-details-img">
+                            <img src="/uploads/<%= team.teamImage %>" alt="Member Image" class="w-100">
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-lg-7">
+                    <div class="team-content">
+                        <h2 class="mb-0 mt-n2">
+                            <%= team.name %>
+                        </h2>
+                        <p class="text-theme fs-xs">
+                            <%= team.specList %>
+                        </p>
+                        <p class="fs-md text-title">
+                            <%- team.description %>
+                        </p>
+                        <a href="/contact"><button class="px-3 py-2 text-white border-0 rounded-3" style="background-color: #07CCEC;">Get appointment</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==============================
+			Footer Area
+	==============================-->
+    <%- include('../layout/ui-footer.ejs') %>

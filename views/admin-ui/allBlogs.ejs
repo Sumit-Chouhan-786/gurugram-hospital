@@ -1,0 +1,261 @@
+<!-- Include the admin header -->
+<%- include('../layout/admin-header.ejs') %>
+
+    <section class="vh-100 d-flex flex-column">
+        <nav class="d-flex justify-content-between align-items-center navbar px-sm-3 px-2 py-3 bg-dark">
+            <div class="d-flex align-items-center gap-2">
+                <div onclick="toggleSidebar()" class="d-lg-none d-flex flex-column justify-content-between toggle_icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a class="text-white" href="/admin/dashboard"><img height="45" width="45" class="w-100"
+                        src="/assets/img/admin/logo.png" alt="logo"></a>
+            </div>
+            <a class="text-white d-flex align-items-center gap-2" href="/admin/logout">Logout<i
+                    class="fa-solid fa-right-from-bracket pt-1"></i></a>
+        </nav>
+        <div class="flex-grow-1 overflow-hidden">
+            <div class="row h-100 overflow-hidden">
+                <div class="col-xl-2 h-100 col-lg-3 px-0 overflow_scroll sidebar_col bg-light">
+                    <div class="sidebar">
+                        <div class="accordion overflow_x_hidden" id="accordionExample">
+                
+                            <a href="/admin/dashboard"
+                                class="d-flex bg-white mb-2 justify-content-start w-100 ps-xl-5 align-items-center py-2">
+                                <i class="fa-solid fa-house"></i>Dashboard
+                            </a>
+                            <a href="/admin/site-setting-display"
+                                class="d-flex bg-white mb-2 justify-content-start  w-100 ps-xl-5 align-items-center py-2">
+                                <i class="fas fa-cogs"></i>Site Setting
+                            </a>
+                
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <span
+                                        class="accordion-button collapsed d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fas fa-sliders"></i>
+                                            Slider</div>
+                
+                                    </span>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-slider" class="sub-item">Add Slider</a>
+                                        <a href="/admin/all-slider" class="sub-item">All Slider</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- More accordion items -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <span
+                                        class="accordion-button collapsed d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i
+                                                class="fa-brands fa-servicestack"></i>
+                                            Services</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-service" class="sub-item">Add Services</a>
+                                        <a href="/admin/all-services" class="sub-item">All Services</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <span
+                                        class="accordion-button collapsed d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fas fa-pagelines"></i>
+                                            Pages</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingFour"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-page" class="sub-item">Add Pages</a>
+                                        <a href="/admin/all-pages" class="sub-item">All Pages</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSeven">
+                                    <span
+                                        class="accordion-button collapsed d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
+                                        aria-controls="collapseSeven">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i
+                                                class="fa-solid fa-universal-access"></i>
+                                            Testimonial</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseSeven" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingSeven"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-testimonial" class="sub-item">Add Testimonial</a>
+                                        <a href="/admin/all-testimonial" class="sub-item">All Testimonial</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <span
+                                        class="accordion-button collapsed  d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fa-solid fa-image"></i>
+                                            Image Gallery</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingFive"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-image-gallery" class="sub-item">Add Gallery</a>
+                                        <a href="/admin/all-image-gallery" class="sub-item">All Gallery</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingNine">
+                                    <span
+                                        class="accordion-button collapsed  d-flex  align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false"
+                                        aria-controls="collapseNine">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fa-solid fa-video"></i>
+                                            Video Gallery</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseNine" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingNine"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-video-gallery" class="sub-item">Add Video</a>
+                                        <a href="/admin/all-video-gallery" class="sub-item">All Video</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/admin/enquire"
+                                class="d-flex bg-white my-2 justify-content-start  w-100 ps-xl-5 align-items-center py-2">
+                                <i class="fa-solid fa-calendar-check"></i>Enquire
+                            </a>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingeleven">
+                                    <span
+                                        class="accordion-button collapsed d-flex align-items-center justify-content-between pe-2 ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseeleven" aria-expanded="false"
+                                        aria-controls="collapseeleven">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fas fa-users"></i>
+                                            Team</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseeleven" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-team" class="sub-item">Add Team</a>
+                                        <a href="/admin/all-team" class="sub-item">All Team</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSix">
+                                    <span
+                                        class="accordion-button collapsed pe-2 d-flex gap-3 align-items-center justify-content-between ps-xl-5 py-2"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
+                                        aria-controls="collapseSix">
+                                        <div class="d-flex align-content-center gap-3 fw-medium"><i class="fas fa-blog"></i>
+                                            Blog</div>
+                                    </span>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse ps-xl-5" aria-labelledby="headingSix"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a href="/admin/add-blog" class="sub-item">Add Blog</a>
+                                        <a href="/admin/all-blogs" class="sub-item">All Blogs</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-10 flex-column col-lg-9 bg_gray h-100 col-12 mb-3 pt-3 px-4 overflow_scroll d-flex">
+                    <% if (message) { %>
+                        <div class="alert d-flex justify-content-between alert-dismissible fade show alert-<%= message.type %>"
+                            role="alert">
+                            <strong>
+                                <%= message.message %>
+                            </strong>
+                            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <% } %>
+                            <h2>All Blogs</h2>
+
+                            <!-- Static Table -->
+                            <table style="min-width: 700px;">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Heading</th>
+                                        <th>Image</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% blogs.forEach((blog, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td>
+                                                <%= blog.title %>
+                                            </td>
+                                            <td>
+                                                <%= blog.heading %>
+                                            </td>
+                                            <td>
+                                                <img src="/uploads/<%= blog.blogImage %>"
+                                                    alt="Service Image <%= index + 1 %>" width="150">
+                                            </td>
+                                            <td class="text-truncate">
+                                                <%= blog.description %>
+                                            </td>
+                                            <td style="padding: 10px;">
+                                                <% if (blog.status==='active' ) { %>
+                                                    <span class="badge"
+                                                        style="background-color: #28a745; color: white; padding: 5px 10px;">Active</span>
+                                                    <% } else { %>
+                                                        <span class="badge"
+                                                            style="background-color: #dc3545; color: white; padding: 5px 10px;">Deactive</span>
+                                                        <% } %>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/update-blog/<%= blog._id %>">
+                                                    <button class="icon-btn">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="/admin/delete-blog/<%= blog._id %>">
+                                                    <button class="icon-btn">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                </div>
+            </div>
+        </div>
+    </section>

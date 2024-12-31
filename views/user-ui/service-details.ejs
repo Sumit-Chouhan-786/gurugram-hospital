@@ -1,0 +1,39 @@
+
+<%- include('../layout/ui-header.ejs') %>
+   
+   <div class="breadcumb-wrapper ">
+        <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
+        <div class="container z-index-common">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">Services Details</h1>
+                <div class="breadcumb-menu-wrap">
+                    <i class="far fa-home-lg"></i>
+                    <ul class="breadcumb-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Services Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+    Service Area
+    ==============================-->
+    <section class="vs-service-wrapper space-top space-md-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="service-content row mb-30">
+                        <div class="d-flex justify-content-center col-lg-5" data-wow-delay="0.3s">
+                            <img style="max-width: 300px;" src="/uploads/<%= service.image %>" alt="Service Image" class="w-100">
+                        </div>
+                        <div class="col-lg-7 mt-3 mt-lg-0">
+                            <h2><%= service.name %></h2>
+                            <p><%- service.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('../layout/ui-footer.ejs') %>
