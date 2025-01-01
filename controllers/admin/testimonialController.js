@@ -167,9 +167,25 @@ const deleteTestimonial = async (req, res) => {
     res.json({ message: err.message, type: "danger" });
   }
 };
+const getAllTestimonialsForIndex = async () => {
+  try {
+    return await Testimonial.find();
+  } catch (err) {
+    throw new Error("Error fetching team");
+  }
+};
+const getTestimonials = async (TestimonialId) => {
+  try {
+    return await Testimonial.findById(TestimonialId);
+  } catch (err) {
+    throw new Error("Error fetching blogs");
+  }
+};
 
 //========================================================================== Exporting Controller Functions
 module.exports = {
+  getAllTestimonialsForIndex,
+  getTestimonials,
   addTestimonial,
   addTestimonialPage,
   allTestimonials,

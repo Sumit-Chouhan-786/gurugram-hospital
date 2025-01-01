@@ -1,41 +1,37 @@
-
 <%- include('../layout/ui-header.ejs') %>
-  
+
     <!--==============================
       Hero Area
     ==============================-->
     <section class="vs-hero-wrapper position-relative  ">
-        <div class="vs-hero-carousel" data-navprevnext="true" data-height="800" data-container="1900" data-slidertype="responsive">
-            <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-1.jpg" alt="Hero Image" class="ls-bg">
-                <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;" data-ls-tablet="left: 100px; top: 80px; font-size: 92px;" data-ls-laptop="left: 100px; top: 120px; font-size: 82px;" style="left: 335px; top: 208px; font-size: 72px; font-weight: 700;" data-ls="delayin: 600; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">By India’s Best </h1>
-                <h1 class="text-white ls-l ls-responsive" data-ls-mobile="left: 100px;  top: 285px; font-size: 120px;" data-ls-tablet="left: 100px; top: 210px; font-size: 92px;" data-ls-laptop="left: 100px; top: 230px; font-size: 82px;" style="left: 335px; top: 290px; font-size: 72px; font-weight: 700;" data-ls="delayin: 0; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">Cardiologist Team</h1>
-                <p class="ls-l text-white ls-responsive ls-hide-sm" data-ls-mobile="left: 100px; " data-ls-tablet=" left: 100px; top: 360px; font-size: 34px; width: 1000px; line-height: 52px;" data-ls-laptop="left: 100px; top: 380px; font-size: 26px; width: 800px; line-height: 48px;" style="left: 335px; top: 400px; width: 605px; font-size: 16px; font-weight: 400; white-space: normal; letter-spacing: 0.02em; line-height: 28px;" data-ls="delayin: 800; texttransitionin: true; textstartatin: transitioninstart; texttypein: lines_asc; textshiftin: 100; textoffsetyin: 100; textdurationin: 2000; offsetyout: 100; durationout: 2000; ">Opinion Based on the American Heart Association and European Cardiology Society Guidelines Share Reports on our Cardiac
-                Health Records Manager ( CHRM ) & receive your Cardiac Second Opinion within 24 Hours That’s We Are Best Cardiologist in
-                Gurgaon India.</p>
-                <div class="ls-btn ls-l ls-responsive" data-ls-mobile="left: 100px; " data-ls-tablet="left: 100px; top: 580px;" data-ls-laptop="left: 100px; top: 580px;" style="left: 335px; top: 518px;" data-ls="offsetyin: 200; durationin: 2000; delayin: 1400; offsetyout: 300; durationout: 2000; offsetyout: 100; durationout: 2000; ">
-                    <a href="service.html" class="vs-btn style3 hover-white">View All Services<i class="fas fa-bolt"></i></a>
+        <div class="vs-hero-carousel" data-navprevnext="true" data-height="800" data-container="1900"
+            data-slidertype="responsive">
+            <% sliders.forEach(slider=> { %>
+                <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
+                    <img src="/uploads/<%= slider.sliderImage %>" alt="Hero Image" class="ls-bg">
+                    <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;"
+                        data-ls-tablet="left: 100px; top: 80px; font-size: 92px;"
+                        data-ls-laptop="left: 100px; top: 120px; font-size: 82px;"
+                        style="left: 335px; top: 208px; font-size: 72px; font-weight: 700;"
+                        data-ls="delayin: 600; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000;">
+                        <%= slider.title %>
+                    </h1>
+            
+                    <p class="ls-l text-white ls-responsive ls-hide-sm" data-ls-mobile="left: 100px;"
+                        data-ls-tablet="left: 100px; top: 360px; font-size: 34px; width: 1000px; line-height: 52px;"
+                        data-ls-laptop="left: 100px; top: 380px; font-size: 26px; width: 800px; line-height: 48px;"
+                        style="left: 335px; top: 400px; width: 605px; font-size: 16px; font-weight: 400; white-space: normal; letter-spacing: 0.02em; line-height: 28px;"
+                        data-ls="delayin: 800; texttransitionin: true; textstartatin: transitioninstart; texttypein: lines_asc; textshiftin: 100; textoffsetyin: 100; textdurationin: 2000; offsetyout: 100; durationout: 2000;">
+                        <%= slider.description %>
+                    </p>
+            
+                    <div class="ls-btn ls-l ls-responsive" data-ls-mobile="left: 100px;" data-ls-tablet="left: 100px; top: 580px;"
+                        data-ls-laptop="left: 100px; top: 580px;" style="left: 335px; top: 518px;"
+                        data-ls="offsetyin: 200; durationin: 2000; delayin: 1400; offsetyout: 300; durationout: 2000; offsetyout: 100; durationout: 2000;">
+                        <a href="/contact" class="vs-btn style3 hover-white">View All Services<i class="fas fa-bolt"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-2.jpg" alt="Hero Image" class="ls-bg">
-                <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;" data-ls-tablet="left: 100px; top: 80px; font-size: 92px;" data-ls-laptop="left: 100px; top: 120px; font-size: 82px;" style="left: 335px; top: 208px; font-size: 72px; font-weight: 700;" data-ls="delayin: 600; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">Confused! What Would</h1>
-                <h1 class="text-white ls-l ls-responsive" data-ls-mobile="left: 100px;  top: 285px; font-size: 120px;" data-ls-tablet="left: 100px; top: 210px; font-size: 92px;" data-ls-laptop="left: 100px; top: 230px; font-size: 82px;" style="left: 335px; top: 290px; font-size: 72px; font-weight: 700;" data-ls="delayin: 0; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">Suit You Better?</h1>
-                <p class="ls-l text-white ls-responsive ls-hide-sm" data-ls-mobile="left: 100px; " data-ls-tablet=" left: 100px; top: 360px; font-size: 34px; width: 1000px; line-height: 52px;" data-ls-laptop="left: 100px; top: 380px; font-size: 26px; width: 800px; line-height: 48px;" style="left: 335px; top: 400px; width: 605px; font-size: 16px; font-weight: 400; white-space: normal; letter-spacing: 0.02em; line-height: 28px;" data-ls="delayin: 800; texttransitionin: true; textstartatin: transitioninstart; texttypein: lines_asc; textshiftin: 100; textoffsetyin: 100; textdurationin: 2000; offsetyout: 100; durationout: 2000; ">Get Opinion on Heart Surgeries & Stenting operations</p>
-                <div class="ls-btn ls-l ls-responsive" data-ls-mobile="left: 100px; " data-ls-tablet="left: 100px; top: 580px;" data-ls-laptop="left: 100px; top: 580px;" style="left: 335px; top: 518px;" data-ls="offsetyin: 200; durationin: 2000; delayin: 1400; offsetyout: 300; durationout: 2000; offsetyout: 100; durationout: 2000; ">
-                    <a href="service.html" class="vs-btn style3 hover-white">View All Services<i class="fas fa-bolt"></i></a>
-                </div>
-            </div>
-            <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-3.jpg" alt="Hero Image" class="ls-bg">
-                <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;" data-ls-tablet="left: 100px; top: 80px; font-size: 92px;" data-ls-laptop="left: 100px; top: 120px; font-size: 82px;" style="left: 335px; top: 208px; font-size: 72px; font-weight: 700;" data-ls="delayin: 600; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">Now Let a Transparent System</h1>
-                <h1 class="text-white ls-l ls-responsive" data-ls-mobile="left: 100px;  top: 285px; font-size: 120px;" data-ls-tablet="left: 100px; top: 210px; font-size: 92px;" data-ls-laptop="left: 100px; top: 230px; font-size: 82px;" style="left: 335px; top: 290px; font-size: 72px; font-weight: 700;" data-ls="delayin: 0; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; ">Help You</h1>
-                <p class="ls-l text-white ls-responsive ls-hide-sm" data-ls-mobile="left: 100px; " data-ls-tablet=" left: 100px; top: 360px; font-size: 34px; width: 1000px; line-height: 52px;" data-ls-laptop="left: 100px; top: 380px; font-size: 26px; width: 800px; line-height: 48px;" style="left: 335px; top: 400px; width: 605px; font-size: 16px; font-weight: 400; white-space: normal; letter-spacing: 0.02em; line-height: 28px;" data-ls="delayin: 800; texttransitionin: true; textstartatin: transitioninstart; texttypein: lines_asc; textshiftin: 100; textoffsetyin: 100; textdurationin: 2000; offsetyout: 100; durationout: 2000; ">A collaborative approach of a team of Cardiologists and Cardiac Surgeons to recommend the action plan that would suit
-                you the best and is based on the American Heart Association and European Cardiology society guidelines.</p>
-                <div class="ls-btn ls-l ls-responsive" data-ls-mobile="left: 100px; " data-ls-tablet="left: 100px; top: 580px;" data-ls-laptop="left: 100px; top: 580px;" style="left: 335px; top: 518px;" data-ls="offsetyin: 200; durationin: 2000; delayin: 1400; offsetyout: 300; durationout: 2000; offsetyout: 100; durationout: 2000; ">
-                    <a href="service.html" class="vs-btn style3 hover-white">View All Services<i class="fas fa-bolt"></i></a>
-                </div>
-            </div>
+                <% }); %>
         </div>
     </section>
     <!--==============================
@@ -46,25 +42,33 @@
         <div class="container">
             <div class="row flex-row-reverse align-items-center">
                 <div class="col-lg-6 mb-40 mb-lg-0">
-                  <div>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JjARsrG1GQQ?si=8OwY3jfBT3b0_AsY"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  </div>
+                    <div>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/JjARsrG1GQQ?si=8OwY3jfBT3b0_AsY"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
                 <div class="col-lg-6 align-self-center">
                     <div class="about-content mb-2 ">
                         <span class="sec-subtitle text-theme h3 mb-2 mb-sm-0">How CHRM portal works ?</span>
-                       <p class="pt-2">Know All About Our Best Cardiologist & Heart Specialist CHRM System.<br>
-                    Cardiac Second Opinion is a website which has been designed specifically for those who are seeking for the second
-                    opinion after being advised an intervention which they are not sure of. In India, after visiting a heart doctor or
-                    surgeon, he likely gets a different opinion which makes him confused about which treatment he should go for. To fill
-                    this vacuum, Cardiac Second Opinion is designed by making use of algorithms based on American Heart Association and
-                    European Cardiological Society which have made guidelines which dictate the treatment as per the disease and not the
-                    doctor. Cardiac Second Opinion has a full team comprising Specialist Interventional Cardiologists, Cardiac Surgeons,
-                    Bariatric Cardiologists, Electrophysiologists, and Non-Interventional Cardiologists (for treatment with medicines only)
-                    on its panel.</p>
+                        <p class="pt-2">Know All About Our Best Cardiologist & Heart Specialist CHRM System.<br>
+                            Cardiac Second Opinion is a website which has been designed specifically for those who are
+                            seeking for the second
+                            opinion after being advised an intervention which they are not sure of. In India, after
+                            visiting a heart doctor or
+                            surgeon, he likely gets a different opinion which makes him confused about which treatment
+                            he should go for. To fill
+                            this vacuum, Cardiac Second Opinion is designed by making use of algorithms based on
+                            American Heart Association and
+                            European Cardiological Society which have made guidelines which dictate the treatment as per
+                            the disease and not the
+                            doctor. Cardiac Second Opinion has a full team comprising Specialist Interventional
+                            Cardiologists, Cardiac Surgeons,
+                            Bariatric Cardiologists, Electrophysiologists, and Non-Interventional Cardiologists (for
+                            treatment with medicines only)
+                            on its panel.</p>
                         <a href="about.html" class="vs-btn">Learn More</a>
                     </div>
                 </div>
@@ -80,12 +84,13 @@
                 <div class="col-md-10 col-lg-8 col-xl-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="section-title">
                         <h2 class="h1 ">Our Services</h2>
-                        <p>Proactively revolutionize granular customer service after pandemic internal or "organic" sources proactive human capital rather.</p>
+                        <p>Proactively revolutionize granular customer service after pandemic internal or "organic"
+                            sources proactive human capital rather.</p>
                     </div>
                 </div>
             </div>
             <div class="row vs-carousel wow fadeIn" data-wow-delay="0.3s" data-slide-show="3">
-                <% services.forEach((service)=> { %>
+                <% services.slice(0, 3).forEach(service=> { %>
                     <div class="col-xl-4 mb-25">
                         <div class="service-box">
                             <div class="sr-img">
@@ -110,52 +115,6 @@
                         </div>
                     </div>
                     <% }); %>
-
-                <!-- <div class="col-xl-4 mb-25">
-                    <div class="service-box ">
-                        <div class="sr-img">
-                            <img src="assets/img/service/sr-2-2.jpg" alt="Service Image" class="w-100">
-                        </div>
-                        <div class="sr-icon">
-                            <i class="flaticon-blood-pressure"></i>
-                        </div>
-                        <div class="sr-content">
-                            <h3 class="h4"><a class="text-reset" href="service.html">Cardiovascular for Women's</a></h3>
-                            <p class="fs-xs">Continually evisculate goal-oriented portals rather than prospective channels. excellent customize life</p>
-                        </div>
-                        <a href="service.html" class="icon-btn style4"><i class="far fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-4 mb-25">
-                    <div class="service-box ">
-                        <div class="sr-img">
-                            <img src="assets/img/service/sr-2-3.jpg" alt="Service Image" class="w-100">
-                        </div>
-                        <div class="sr-icon">
-                            <i class="flaticon-stethoscope-1"></i>
-                        </div>
-                        <div class="sr-content">
-                            <h3 class="h4"><a class="text-reset" href="service.html">Heart Checkup or Cardiovascular</a></h3>
-                            <p class="fs-xs">Continually evisculate goal-oriented portals rather than prospective channels. excellent customize life</p>
-                        </div>
-                        <a href="service.html" class="icon-btn style4"><i class="far fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-xl-4 mb-25">
-                    <div class="service-box ">
-                        <div class="sr-img">
-                            <img src="assets/img/service/sr-2-4.jpg" alt="Service Image" class="w-100">
-                        </div>
-                        <div class="sr-icon">
-                            <i class="flaticon-quality-of-life"></i>
-                        </div>
-                        <div class="sr-content">
-                            <h3 class="h4"><a class="text-reset" href="service.html">Laboratory & Pathology Drag</a></h3>
-                            <p class="fs-xs">Continually evisculate goal-oriented portals rather than prospective channels. excellent customize life</p>
-                        </div>
-                        <a href="service.html" class="icon-btn style4"><i class="far fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
@@ -168,31 +127,37 @@
                 <div class="row justify-content-center justify-content-lg-between">
                     <div class="col-md-6 col-lg-auto  mb-30">
                         <div class="d-xl-flex text-center text-xl-start skill-box">
-                            <span class="ripple-icon hover-style2  align-self-start mb-20 mb-xl-0 mr-20"><i class="flaticon-discuss"></i></span>
+                            <span class="ripple-icon hover-style2  align-self-start mb-20 mb-xl-0 mr-20"><i
+                                    class="flaticon-discuss"></i></span>
                             <div class="media-body">
                                 <h2 class="mt-n2 mb-0 text-theme">30+</h2>
                                 <p class="text-title fs-md fw-medium mt-1 mt-xl-0 mb-2 mb-xl-2">Years Of Experience</p>
-                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors. Authoritatively engage</p>
+                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors.
+                                    Authoritatively engage</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-auto  mb-30">
                         <div class="d-xl-flex text-center text-xl-start skill-box">
-                            <span class="ripple-icon  hover-style2 align-self-start mb-20 mb-xl-0 mr-20"><i class="flaticon-medical-equipment"></i></span>
+                            <span class="ripple-icon  hover-style2 align-self-start mb-20 mb-xl-0 mr-20"><i
+                                    class="flaticon-medical-equipment"></i></span>
                             <div class="media-body">
                                 <h2 class="mt-n2 mb-0 text-theme">100+</h2>
                                 <p class="text-title fs-md fw-medium mt-1 mt-xl-0 mb-2 mb-xl-2">Experienced Doctor's</p>
-                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors. Authoritatively engage</p>
+                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors.
+                                    Authoritatively engage</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-auto  mb-30">
                         <div class="d-xl-flex text-center text-xl-start skill-box">
-                            <span class="ripple-icon  hover-style2 align-self-start mb-20 mb-xl-0 mr-20"><i class="flaticon-healthcare"></i></span>
+                            <span class="ripple-icon  hover-style2 align-self-start mb-20 mb-xl-0 mr-20"><i
+                                    class="flaticon-healthcare"></i></span>
                             <div class="media-body">
                                 <h2 class="mt-n2 mb-0 text-theme">200+</h2>
                                 <p class="text-title fs-md fw-medium mt-1 mt-xl-0 mb-2 mb-xl-2">Happy Patients</p>
-                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors. Authoritatively engage</p>
+                                <p class="fs-xs mb-0">Incubate extensive scenarios without top-line quality vectors.
+                                    Authoritatively engage</p>
                             </div>
                         </div>
                     </div>
@@ -212,7 +177,9 @@
                         <h2 class="h1 mb-3">We’re Here For You</h2>
                         <div class="row">
                             <div class="col-xl-10 mb-md-2 pb-md-1">
-                                <p class="mb-md-4">Proactively revolutionize granular customer service after pandemic internal or "organic" sources. Distinctively impact proactive human capital rather than client-centered benefits. </p>
+                                <p class="mb-md-4">Proactively revolutionize granular customer service after pandemic
+                                    internal or "organic" sources. Distinctively impact proactive human capital rather
+                                    than client-centered benefits. </p>
                             </div>
                             <div class="col-md-6 col-lg-5 col-xl-4">
                                 <ul class="vs-list list-unstyled text-title">
@@ -261,7 +228,8 @@
                                     <p class="mb-0 text-white-light">Please Call Us To Ensure</p>
                                 </div>
                                 <div class="col-auto d-none d-sm-block">
-                                    <a href="tel:0088123456789" class="ripple-icon style2"><i class="fas fa-phone"></i></a>
+                                    <a href="tel:0088123456789" class="ripple-icon style2"><i
+                                            class="fas fa-phone"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -270,19 +238,20 @@
                                 <div class="col-xl-6 form-group">
                                     <select class="form-select style2">
                                         <option hidden disabled selected>Select Services</option>
-                                        <option>Aerospace Medicine</option>
-                                        <option>Bariatric Surgery</option>
-                                        <option>Infectious Diseases</option>
-                                        <option>Laboratory Medicine</option>
+                                        <% services.forEach((service)=> { %>
+                                            <option>
+                                                <%= service.name %>
+                                            </option>
+                                            <% }); %>
                                     </select>
                                 </div>
                                 <div class="col-xl-6 form-group">
                                     <select class="form-select style2">
                                         <option hidden disabled selected>Choose Doctor</option>
-                                        <option>Aerospace Medicine</option>
-                                        <option>Bariatric Surgery</option>
-                                        <option>Infectious Diseases</option>
-                                        <option>Laboratory Medicine</option>
+                                            <% teams.forEach((team)=> { %>
+                                        <option><%= team.name %></option>
+                                        <% }); %>
+                               
                                     </select>
                                 </div>
                                 <div class="col-xl-6 form-group">
@@ -298,11 +267,13 @@
                                     <i class="fal small fa-phone"></i>
                                 </div>
                                 <div class="col-xl-6 form-group">
-                                    <input type="text" class="dateTime-pick form-control  style2" placeholder="Select Date & Time">
+                                    <input type="text" class="dateTime-pick form-control  style2"
+                                        placeholder="Select Date & Time">
                                     <i class="fal small fa-calendar-alt"></i>
                                 </div>
                                 <div class="col-xl-12 text-center">
-                                    <button type="submit" class="vs-btn style2">Make Appointment<i class="far fa-calendar-alt"></i></button>
+                                    <button type="submit" class="vs-btn style2">Make Appointment<i
+                                            class="far fa-calendar-alt"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -322,7 +293,8 @@
                     <div class="section-title">
                         <span class="h3 text-theme sec-subtitle">Case Study</span>
                         <h2 class="h1 text-white">Latest Projects</h2>
-                        <p class="text-white">Proactively revolutionize granular customer service after pandemic internal or "organic" sources proactive human capital rather.</p>
+                        <p class="text-white">Proactively revolutionize granular customer service after pandemic
+                            internal or "organic" sources proactive human capital rather.</p>
                     </div>
                 </div>
             </div>
@@ -335,7 +307,8 @@
                         <div class="project-content">
                             <span class="project-cat fs-xs">New Surgeon</span>
                             <h4 class="project-name">Heart Surgery</h4>
-                            <a href="assets/img/project/pro-1-1.jpg" class="icon-btn style4 popup-image"><i class="fal fa-eye"></i></a>
+                            <a href="assets/img/project/pro-1-1.jpg" class="icon-btn style4 popup-image"><i
+                                    class="fal fa-eye"></i></a>
                         </div>
                     </div>
                 </div>
@@ -347,7 +320,8 @@
                         <div class="project-content">
                             <span class="project-cat fs-xs">Development</span>
                             <h4 class="project-name">Neurosurgeon</h4>
-                            <a href="assets/img/project/pro-1-2.jpg" class="icon-btn style4 popup-image"><i class="fal fa-eye"></i></a>
+                            <a href="assets/img/project/pro-1-2.jpg" class="icon-btn style4 popup-image"><i
+                                    class="fal fa-eye"></i></a>
                         </div>
                     </div>
                 </div>
@@ -359,7 +333,8 @@
                         <div class="project-content">
                             <span class="project-cat fs-xs">Top Ranked</span>
                             <h4 class="project-name">Ophthalmic </h4>
-                            <a href="assets/img/project/pro-1-3.jpg" class="icon-btn style4 popup-image"><i class="fal fa-eye"></i></a>
+                            <a href="assets/img/project/pro-1-3.jpg" class="icon-btn style4 popup-image"><i
+                                    class="fal fa-eye"></i></a>
                         </div>
                     </div>
                 </div>
@@ -371,14 +346,15 @@
                         <div class="project-content">
                             <span class="project-cat fs-xs">New Special</span>
                             <h4 class="project-name">Oculoplastic</h4>
-                            <a href="assets/img/project/pro-1-4.jpg" class="icon-btn style4 popup-image"><i class="fal fa-eye"></i></a>
+                            <a href="assets/img/project/pro-1-4.jpg" class="icon-btn style4 popup-image"><i
+                                    class="fal fa-eye"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <div data-bg-src="assets/img/bg/bg-shape-8.jpg">
+    <div data-bg-src="/assets/img/bg/bg-shape-8.jpg">
         <!-- Middle Box Area -->
         <section class="vs-middle-box-wrapper space-bottom">
             <div class="container">
@@ -418,79 +394,44 @@
                         <div class="section-title">
                             <span class="h3 text-theme sec-subtitle">Testimonial</span>
                             <h2 class="h1 ">Patient Says</h2>
-                            <p>Proactively revolutionize granular customer service after pandemic internal or "organic" sources proactive human capital rather.</p>
+                            <p>Proactively revolutionize granular customer service after pandemic internal or "organic"
+                                sources proactive human capital rather.</p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-10">
-                        <div class="row vs-carousel wow fadeInUp" data-wow-delay="0.3s" data-slide-show="2">
-                            <div class="col-xl-6">
-                                <div class="testimonial-box mb-30 bg-white">
-                                    <div class="content">
-                                        <p class="fs-md">Uniquely strategize 2.0 portals after fully researched vortals. Quickly repurpose front-end metrics through</p>
-                                    </div>
-                                    <div class="author-img">
-                                        <div class="avater-line"></div>
-                                        <div class="avater">
-                                            <img src="assets/img/author/author-2-1.jpg" alt="Author Image">
+                        <div class="row  testimonial-slider wow fadeInUp" data-wow-delay="0.3s" data-slide-show="2">
+                            <% testimonials.forEach(testimonial=> { %>
+                                <div class="col-xl-6">
+                                    <div class="testimonial-box mb-30 bg-white">
+                                        <div class="content">
+                                            <p class="fs-md text-truncate"><%- testimonial.description %></p>
                                         </div>
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="info">
-                                            <h3 class="fs-20 name">Moris Jonson</h3>
-                                            <span class="fs-xs degi text-theme">CEO, Hosak Int. Ltd.</span>
+                                        <div class="author-img">
+                                            <div class="avater-line"></div>
+                                            <div class="avater">
+                                                <img src="/uploads/<%= testimonial.testimonialImage %>"
+                                                    alt="Author Image">
+                                            </div>
                                         </div>
-                                        <div class="testi-rating">
-                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="testimonial-box mb-30 bg-white">
-                                    <div class="content">
-                                        <p class="fs-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et</p>
-                                    </div>
-                                    <div class="author-img">
-                                        <div class="avater-line"></div>
-                                        <div class="avater">
-                                            <img src="assets/img/author/author-2-2.jpg" alt="Author Image">
-                                        </div>
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="info">
-                                            <h3 class="fs-20 name">Peter Parker</h3>
-                                            <span class="fs-xs degi text-theme">HR, Tech Master Ltd.</span>
-                                        </div>
-                                        <div class="testi-rating">
-                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
+                                        <div class="author-info">
+                                            <div class="info">
+                                                <h3 class="fs-20 name">
+                                                    <%= testimonial.name %>
+                                                </h3>
+                                            </div>
+                                            <div class="testi-rating">
+                                                <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5">
+                                                    <span style="width:100%">Rated <strong class="rating">5.00</strong>
+                                                        out of 5</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="testimonial-box mb-30 bg-white">
-                                    <div class="content">
-                                        <p class="fs-md">From its medieval origins to the digital era, learn everything there is to know about ubiquitous ipsum passage </p>
-                                    </div>
-                                    <div class="author-img">
-                                        <div class="avater-line"></div>
-                                        <div class="avater">
-                                            <img src="assets/img/author/author-2-3.jpg" alt="Author Image">
-                                        </div>
-                                    </div>
-                                    <div class="author-info">
-                                        <div class="info">
-                                            <h3 class="fs-20 name">David Smith</h3>
-                                            <span class="fs-xs degi text-theme">Founder, Ajaira LTD.</span>
-                                        </div>
-                                        <div class="testi-rating">
-                                            <div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <% }); %>
+
                         </div>
                     </div>
                 </div>
@@ -507,89 +448,36 @@
                     <div class="section-title">
                         <span class="h3 text-theme sec-subtitle">Blog Posts</span>
                         <h2 class="h1 ">Latest News</h2>
-                        <p>Proactively revolutionize granular customer service after pandemic internal or "organic" sources proactive human capital rather.</p>
+                        <p>Proactively revolutionize granular customer service after pandemic internal or "organic"
+                            sources proactive human capital rather.</p>
                     </div>
                 </div>
             </div>
             <div class="row vs-carousel wow fadeInUp" data-wow-delay="0.3s" data-slide-show="3" data-lg-slide-show="2">
+            <% blogs.slice(0, 3).forEach(blog=> { %>
                 <div class="col-xl-4">
                     <div class="vs-blog blog-card">
                         <div class="blog-img">
-                            <img src="assets/img/blog/b-1-1.jpg" alt="Blog Image" class="w-100">
+                            <img style="max-height: 350px;min-height: 350px;object-fit: cover; background-position: top;" src="/uploads/<%= blog.blogImage %>" alt="Blog Image" class="w-100">
                             <div class="blog-date">
-                                <div class="day">22</div>
-                                Jan 2023
+                                <%= new Date(blog.createdAt).toLocaleDateString('en-US', { year: 'numeric' , month: 'long' ,
+                                    day: 'numeric' }) %>
                             </div>
                         </div>
                         <div class="blog-content">
-                            <div class="blog-meta">
-                                <a href="blog.html"><i class="far fa-folder"></i>Mental Health</a>
-                                <a href="blog.html"><i class="fal fa-user"></i>David Smith</a>
-                            </div>
-                            <h3 class="blog-title h5 font-body lh-base"><a href="blog.html">Services enable process is tobe after user-centric schemas now</a></h3>
-                            <a href="blog.html" class="link-btn">Read More<i class="far fa-long-arrow-right"></i></a>
+                            <h3 class="blog-title h5 font-body lh-base">
+                                <a href="/blog-details/<%= blog.id %>">
+                                    <%= blog.heading %>
+                                </a>
+                            </h3>
+                            <a href="/blog-details/<%= blog.id %>" class="link-btn">Read More<i class="far fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-card">
-                        <div class="blog-img">
-                            <img src="assets/img/blog/b-1-2.jpg" alt="Blog Image" class="w-100">
-                            <div class="blog-date">
-                                <div class="day">23</div>
-                                Mar 2023
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <a href="blog.html"><i class="far fa-folder"></i>Therapy</a>
-                                <a href="blog.html"><i class="fal fa-user"></i>Vivi Marian</a>
-                            </div>
-                            <h3 class="blog-title h5 font-body lh-base"><a href="blog.html">From its medieval origins to the digital era everything there</a></h3>
-                            <a href="blog.html" class="link-btn">Read More<i class="far fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-card">
-                        <div class="blog-img">
-                            <img src="assets/img/blog/b-1-3.jpg" alt="Blog Image" class="w-100">
-                            <div class="blog-date">
-                                <div class="day">28</div>
-                                Dec 2023
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <a href="blog.html"><i class="far fa-folder"></i>Acupressure </a>
-                                <a href="blog.html"><i class="fal fa-user"></i>Moris John</a>
-                            </div>
-                            <h3 class="blog-title h5 font-body lh-base"><a href="blog.html">Latin derived from Cicero's 1st-century BC text De Fini now with</a></h3>
-                            <a href="blog.html" class="link-btn">Read More<i class="far fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-card">
-                        <div class="blog-img">
-                            <img src="assets/img/blog/b-1-4.jpg" alt="Blog Image" class="w-100">
-                            <div class="blog-date">
-                                <div class="day">22</div>
-                                Jan 2023
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <a href="blog.html"><i class="far fa-folder"></i>Mental Health</a>
-                                <a href="blog.html"><i class="fal fa-user"></i>David Smith</a>
-                            </div>
-                            <h3 class="blog-title h5 font-body lh-base"><a href="blog.html">Creation timelines the standard lorem ipsum passage vary</a></h3>
-                            <a href="blog.html" class="link-btn">Read More<i class="far fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <% }); %>
+
             </div>
         </div>
     </section>
-   
- <%- include('../layout/ui-footer.ejs') %>
+
+    <%- include('../layout/ui-footer.ejs') %>

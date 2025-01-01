@@ -137,7 +137,7 @@ const allSlidersPage = async (req, res) => {
 };
 
 // ======================================================================== fath all sliders image for ui
-const SliderPageForIndex = async () => {
+const getAllSliderIndex = async () => {
   try {
     return await Slider.find();
   } catch (err) {
@@ -145,9 +145,10 @@ const SliderPageForIndex = async () => {
   }
 };
 
+
 module.exports = {
   addSliderPage,
-  SliderPageForIndex,
+  getAllSliderIndex,
   addSlider,
   updateSliderPage,
   updateSlider,

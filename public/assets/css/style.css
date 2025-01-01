@@ -2641,6 +2641,10 @@ textarea.form-control.is-invalid {
   left: 100px;
   /* Extra large devices */
 }
+
+.text-truncate{
+  max-width: 300px !important;
+}
 @media (max-width: 1500px) {
   .icon-shape3 {
     display: none;

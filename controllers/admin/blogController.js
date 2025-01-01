@@ -168,9 +168,26 @@ const deleteBlog = async (req, res) => {
   }
 };
 
+const getAllBlogsForIndex = async () => {
+  try {
+    return await Blog.find();
+  } catch (err) {
+    throw new Error("Error fetching team");
+  }
+};
+const getBlog = async (BlogId) => {
+  try {
+    return await Blog.findById(BlogId);
+  } catch (err) {
+    throw new Error("Error fetching blogs");
+  }
+};
+
 //========================================================================== Exporting Controller Functions
 module.exports = {
   addBlog,
+  getAllBlogsForIndex,
+  getBlog,
   addBlogPage,
   allBlogs,
   updateBlog,
