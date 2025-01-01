@@ -95,7 +95,7 @@
                         <div class="service-box">
                             <div class="sr-img">
                                 <!-- Dynamically render service image -->
-                                <img src="/uploads/<%= service.image %>" alt="<%= service.name || 'Service Image' %>"
+                                <img style="max-height: 270px;min-height: 270px;object-fit: cover;" src="/uploads/<%= service.image %>" alt="<%= service.name || 'Service Image' %>"
                                     class="w-100">
                             </div>
                             <div class="sr-icon">

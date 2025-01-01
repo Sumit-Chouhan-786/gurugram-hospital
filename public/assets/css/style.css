@@ -2645,6 +2645,7 @@ textarea.form-control.is-invalid {
 .text-truncate{
   max-width: 300px !important;
 }
+
 @media (max-width: 1500px) {
   .icon-shape3 {
     display: none;

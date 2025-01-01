@@ -164,14 +164,60 @@ router.get("/adult-cardiac-disease", async (req, res) => {
   }
 });
 
-router.get("/pediatric-cardiac-disease", (req, res) => {
-  res.render("../views/user-ui/pediatric-cardiac-disease.ejs");
+router.get("/pediatric-cardiac-disease",async (req, res) => {
+    try {
+    // Fetch services and testimonials asynchronously
+    const services = await getAllServicesIndex.getAllServicesIndex();
+
+    // Render the index page with fetched data
+    res.render("user-ui/pediatric-cardiac-disease", { services });
+  } catch (err) {
+    console.error("Error fetching data for the index page:", err); 
+
+    // Render an error page with a friendly message
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
 });
-router.get("/cardiac-arrhythmia", (req, res) => {
-  res.render("../views/user-ui/cardiac-arrhythmia.ejs");
+router.get("/cardiac-arrhythmia",async (req, res) => {
+    try {
+    // Fetch services and testimonials asynchronously
+    const services = await getAllServicesIndex.getAllServicesIndex();
+
+    // Render the index page with fetched data
+    res.render("user-ui/cardiac-arrhythmia", { services });
+  } catch (err) {
+    console.error("Error fetching data for the index page:", err); 
+
+    // Render an error page with a friendly message
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
 });
-router.get("/health-failure", (req, res) => {
-  res.render("../views/user-ui/health-failure.ejs");
+router.get("/health-failure",async (req, res) => {
+    try {
+    // Fetch services and testimonials asynchronously
+    const services = await getAllServicesIndex.getAllServicesIndex();
+
+    // Render the index page with fetched data
+    res.render("user-ui/health-failure", { services });
+  } catch (err) {
+    console.error("Error fetching data for the index page:", err); 
+
+    // Render an error page with a friendly message
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
+  
 });
 
 

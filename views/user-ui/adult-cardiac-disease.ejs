@@ -23,29 +23,30 @@
     <section class="vs-service-wrapper space-top space-md-bottom">
         <div class="container">
             <div class="row">
-            <% services.forEach(service=> {
-                if (service.category === "Adult cardiac disease") { %>
-                <div class="col-md-6 col-xl-4">
-                    <div class="service-thumb">
-                        <div class="sr-img">
-                            <img class="w-100" src="/uploads/<%= service.image %>" alt="Service Image">
-                        </div>
-                        <div class="sr-body">
-                            <span class="sr-icon"><i class="flaticon-discuss fa-3x"></i></span>
-                            <h3 class="h4 sr-title">
-                                <a class="text-reset" href="/service-details/<%= service.id %>">
-                                    <%= service.name %>
-                                </a>
-                            </h3>
-                            <div class="sr-content">
-                                <a href="/service-details/<%= service.id %>" class="link-btn">
-                                    Read More<i class="fal fa-long-arrow-right"></i>
-                                </a>
+                <% services.forEach(service=> {
+                    if (service.category === "Adult cardiac disease") { %>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="service-thumb">
+                            <div class="sr-img">
+                                <img style="max-height: 350px;min-height: 350px;object-fit: cover;" class="w-100"
+                                    src="/uploads/<%= service.image %>" alt="Service Image">
+                            </div>
+                            <div class="sr-body">
+                                <span class="sr-icon"><i class="flaticon-discuss fa-3x"></i></span>
+                                <h3 class="h4 sr-title">
+                                    <a class="text-reset" href="/service-details/<%= service.id %>">
+                                        <%= service.name %>
+                                    </a>
+                                </h3>
+                                <div class="sr-content">
+                                    <a href="/service-details/<%= service.id %>" class="link-btn">
+                                        Read More<i class="fal fa-long-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <% } }); %>
+                    <% } }); %>
 
             </div>
         </div>
