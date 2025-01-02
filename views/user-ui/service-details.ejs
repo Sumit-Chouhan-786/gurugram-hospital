@@ -56,211 +56,201 @@
 
 <body>
 
-    <!--==============================
+<!--==============================
          Preloader
       ==============================-->
-    <div class="preloader  ">
-        <button class="vs-btn preloaderCls">Cancel Preloader </button>
-        <div class="preloader-inner">
-            <svg width="88px" height="108px" viewBox="0 0 54 64">
-                <defs></defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <path class="beat-loader"
-                        d="M0.5,38.5 L16,38.5 L19,25.5 L24.5,57.5 L31.5,7.5 L37.5,46.5 L43,38.5 L53.5,38.5" id="Path-2"
-                        stroke-width="2"></path>
-                </g>
-            </svg>
-        </div>
+<div class="preloader  ">
+    <button class="vs-btn preloaderCls">Cancel Preloader </button>
+    <div class="preloader-inner">
+        <svg width="88px" height="108px" viewBox="0 0 54 64">
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <path class="beat-loader"
+                    d="M0.5,38.5 L16,38.5 L19,25.5 L24.5,57.5 L31.5,7.5 L37.5,46.5 L43,38.5 L53.5,38.5" id="Path-2"
+                    stroke-width="2"></path>
+            </g>
+        </svg>
     </div>
-    <!--==============================
+</div>
+<!--==============================
         Mobile Menu
       ============================== -->
-    <div class="vs-menu-wrapper">
-        <div class="vs-menu-area text-center">
-            <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
-            <div class="mobile-logo">
-                <a href="/"><img src="/uploads/<%= siteSettings[0].logo %>" alt="Medixi"></a>
-            </div>
-            <div class="vs-mobile-menu">
-                <ul>
-                    <li class="menu-item-has-children">
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/about">About Us</a>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/adult-cardiac-disease">Adult cardiac disease</a>
-                        <ul class="sub-menu">
-                            <li><a href="./coronary-artery-diseases.html.html">Coronary Artery Diseases</a></li>
-                            <li><a href="./valvular-heart-diseases.html">Valvular Heart Diseases</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
-                        <ul class="sub-menu">
-                            <li><a href="acyanotic-heart-diseases.html">Acyanotic Heart Diseases</a></li>
-                            <li><a href="cyanotic-heart-diseases.html">Cyanotic Heart Diseases</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
-                        <ul class="sub-menu">
-                            <li><a href="atrial-fibrillation-treatment.html">Atrial Fibrillation
-                                    Treatment in India (AF)</a></li>
-                            <li><a href="ventricular-tachycardia-treatment.html">Ventricular Tachycardia &amp;
-                                    Supraventricular Tachycardia Treatment in India</a></li>
-                            <li><a href="conduction-blocks.html">Conduction Blocks</a></li>
-                            <li><a href="electrophysiology-heart.html">Electrophysiology of Heart In
-                                    Delhi, India</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/health-failure">Health Failure</a>
-                        <ul class="sub-menu">
-                            <li><a href="medical-management-heart-failure.html">Medical Management of
-                                    Heart Failure in Delhi, India</a></li>
-                            <li><a href="aicd-implantable-defibrillator.html">Automated Implantable Cardioverter
-                                    Defibrillator – AICD</a></li>
-                            <li><a href="crt-d-treatment-cost.html">CRT- D Treatment For Heart &amp; CRT Cost
-                                    in Delhi, India</a></li>
-                            <li><a href="heart-assist-device.html">Heart Assist Device</a></li>
-                            <li><a href="heart-transplant-surgery.html">
-                                    Heart Transplant Surgery in
-                                    Delhi, India
+<div class="vs-menu-wrapper">
+    <div class="vs-menu-area text-center">
+        <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
+        <div class="mobile-logo">
+            <a href="/"><img src="/uploads/<%= siteSettings[0].logo %>" alt="Medixi"></a>
+        </div>
+        <div class="vs-mobile-menu">
+            <ul>
+                <li class="menu-item-has-children">
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About Us</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="/adult-cardiac-disease">Adult Cardiac Disease</a>
+                    <ul class="sub-menu">
+                        <% adultCardiacServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
                                 </a></li>
-                        </ul>
-                    </li>
+                            <% }); %>
+                    </ul>
+                </li>
 
-                </ul>
-            </div>
+                <li class="menu-item-has-children">
+                    <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
+                    <ul class="sub-menu">
+                        <% pediatricCardiacServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children">
+                    <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
+                    <ul class="sub-menu">
+                        <% cardiacArrhythmiaServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children">
+                    <a href="/heart-failure">Heart Failure</a>
+                    <ul class="sub-menu">
+                        <% heartFailureServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <!--==============================
+</div>
+<!--==============================
             Header Area
         ==============================-->
-    <header class="header-wrapper header-layout1">
-        <!-- Header Top -->
-        <div class="header-top bg-title py-2 d-none d-md-block">
-            <div class="container container-style1 py-1">
-                <div class="row justify-content-center justify-content-xl-between">
-                    <div class="col-auto">
-                        <ul class="header-top-info list-unstyled m-0">
-                            <li><i class="far fa-envelope"></i><a href="<%= siteSettings[0].email %>"
-                                    class="text-reset">
-                                    <%= siteSettings[0].email %>
-                                </a></li>
-                            <li><i class="far fa-phone"></i><a href="tel:<%= siteSettings[0].number %>"
-                                    class="text-reset">
-                                    <%= siteSettings[0].number %>
-                                </a></li>
-                            <li><i class="far fa-clock"></i>Mon - Fri: 9:00 am - 6:00 pm</li>
-                        </ul>
-                    </div>
-                    <div class="col-auto d-none d-xl-block">
-                        <ul class="head-top-links text-end">
-                            <li>
-                                <ul class="header-social">
-                                    <li>
-                                        <a href="<%= siteSettings[0].facebook %>"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="<%= siteSettings[0].twitter %>"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="<%= siteSettings[0].linkedin %>"><i class="fab fa-linkedin-in"></i></a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+<header class="header-wrapper header-layout1">
+    <!-- Header Top -->
+    <div class="header-top bg-title py-2 d-none d-md-block">
+        <div class="container container-style1 py-1">
+            <div class="row justify-content-center justify-content-xl-between">
+                <div class="col-auto">
+                    <ul class="header-top-info list-unstyled m-0">
+                        <li><i class="far fa-envelope"></i><a href="<%= siteSettings[0].email %>" class="text-reset">
+                                <%= siteSettings[0].email %>
+                            </a></li>
+                        <li><i class="far fa-phone"></i><a href="tel:<%= siteSettings[0].number %>" class="text-reset">
+                                <%= siteSettings[0].number %>
+                            </a></li>
+                        <li><i class="far fa-clock"></i>Mon - Fri: 9:00 am - 6:00 pm</li>
+                    </ul>
+                </div>
+                <div class="col-auto d-none d-xl-block">
+                    <ul class="head-top-links text-end">
+                        <li>
+                            <ul class="header-social">
+                                <li>
+                                    <a href="<%= siteSettings[0].facebook %>"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="<%= siteSettings[0].twitter %>"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="<%= siteSettings[0].linkedin %>"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- Sticky Active -->
-        <div class="sticky-wrap">
-            <div class="sticky-active">
-                <!-- Header Main -->
-                <div class="header-main">
-                    <div class="container container-style1 position-relative">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-auto">
-                                <div class="header1-logo py-2">
-                                    <a href="/"><img src="/uploads/<%= siteSettings[0].logo %>" alt="Logo"></a>
-                                </div>
+    </div>
+    <!-- Sticky Active -->
+    <div class="sticky-wrap">
+        <div class="sticky-active">
+            <!-- Header Main -->
+            <div class="header-main">
+                <div class="container container-style1 position-relative">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                            <div class="header1-logo py-2">
+                                <a href="/"><img src="/uploads/<%= siteSettings[0].logo %>" alt="Logo"></a>
                             </div>
-                            <div class="col text-end text-lg-center">
-                                <nav class="main-menu menu-style1 d-none d-lg-flex justify-content-end">
-                                    <ul>
-                                        <li>
-                                            <a href="/">Home </a>
-                                        </li>
-                                        <li>
-                                            <a href="/about">About</a>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="/adult-cardiac-disease">Adult cardiac disease</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="./coronary-artery-diseases.html.html">Coronary Artery
-                                                        Diseases</a></li>
-                                                <li><a href="./valvular-heart-diseases.html">Valvular Heart Diseases</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="acyanotic-heart-diseases.html">Acyanotic Heart Diseases</a>
-                                                </li>
-                                                <li><a href="cyanotic-heart-diseases.html">Cyanotic Heart Diseases</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="atrial-fibrillation-treatment.html">Atrial Fibrillation
-                                                        Treatment in India (AF)</a></li>
-                                                <li><a href="ventricular-tachycardia-treatment.html">Ventricular
-                                                        Tachycardia
-                                                        &amp;
-                                                        Supraventricular Tachycardia Treatment in India</a></li>
-                                                <li><a href="conduction-blocks.html">Conduction Blocks</a></li>
-                                                <li><a href="electrophysiology-heart.html">Electrophysiology of Heart In
-                                                        Delhi, India</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="/health-failure">Health Failure</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="medical-management-heart-failure.html">Medical Management
-                                                        of
-                                                        Heart Failure in Delhi, India</a></li>
-                                                <li><a href="aicd-implantable-defibrillator.html">Automated Implantable
-                                                        Cardioverter
-                                                        Defibrillator – AICD</a></li>
-                                                <li><a href="crt-d-treatment-cost.html">CRT- D Treatment For Heart &amp;
-                                                        CRT
-                                                        Cost
-                                                        in Delhi, India</a></li>
-                                                <li><a href="heart-assist-device.html">Heart Assist Device</a></li>
-                                                <li><a href="heart-transplant-surgery.html">
-                                                        Heart Transplant Surgery in
-                                                        Delhi, India
+                        </div>
+                        <div class="col text-end text-lg-center">
+                            <nav class="main-menu menu-style1 d-none d-lg-flex justify-content-end">
+                                <ul>
+                                    <li>
+                                        <a href="/">Home </a>
+                                    </li>
+                                    <li>
+                                        <a href="/about">About</a>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="/adult-cardiac-disease">Adult Cardiac Disease</a>
+                                        <ul class="sub-menu">
+                                            <% adultCardiacServices.forEach(service=> { %>
+                                                <li><a href="/service-details/<%= service._id %>">
+                                                        <%= service.name %>
                                                     </a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <button class="vs-menu-toggle d-inline-block d-lg-none"><i
-                                        class="fas fa-bars"></i></button>
-                            </div>
+                                                <% }); %>
+                                        </ul>
+                                    </li>
+
+                                    <li class="menu-item-has-children">
+                                        <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
+                                        <ul class="sub-menu">
+                                            <% pediatricCardiacServices.forEach(service=> { %>
+                                                <li><a href="/service-details/<%= service._id %>">
+                                                        <%= service.name %>
+                                                    </a></li>
+                                                <% }); %>
+                                        </ul>
+                                    </li>
+
+                                    <li class="menu-item-has-children">
+                                        <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
+                                        <ul class="sub-menu">
+                                            <% cardiacArrhythmiaServices.forEach(service=> { %>
+                                                <li><a href="/service-details/<%= service._id %>">
+                                                        <%= service.name %>
+                                                    </a></li>
+                                                <% }); %>
+                                        </ul>
+                                    </li>
+
+                                    <li class="menu-item-has-children">
+                                        <a href="/heart-failure">Heart Failure</a>
+                                        <ul class="sub-menu">
+                                            <% heartFailureServices.forEach(service=> { %>
+                                                <li><a href="/service-details/<%= service._id %>">
+                                                        <%= service.name %>
+                                                    </a></li>
+                                                <% }); %>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                            <button class="vs-menu-toggle d-inline-block d-lg-none"><i class="fas fa-bars"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="breadcumb-wrapper ">
         <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>

@@ -86,48 +86,49 @@
                     <li>
                         <a href="/about">About Us</a>
                     </li>
-                    <li class="menu-item-has-children">
-                        <a href="/adult-cardiac-disease">Adult cardiac disease</a>
-                        <ul class="sub-menu">
-                            <li><a href="./coronary-artery-diseases.html.html">Coronary Artery Diseases</a></li>
-                            <li><a href="./valvular-heart-diseases.html">Valvular Heart Diseases</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
-                        <ul class="sub-menu">
-                            <li><a href="acyanotic-heart-diseases.html">Acyanotic Heart Diseases</a></li>
-                            <li><a href="cyanotic-heart-diseases.html">Cyanotic Heart Diseases</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
-                        <ul class="sub-menu">
-                            <li><a href="atrial-fibrillation-treatment.html">Atrial Fibrillation
-                                    Treatment in India (AF)</a></li>
-                            <li><a href="ventricular-tachycardia-treatment.html">Ventricular Tachycardia &amp;
-                                    Supraventricular Tachycardia Treatment in India</a></li>
-                            <li><a href="conduction-blocks.html">Conduction Blocks</a></li>
-                            <li><a href="electrophysiology-heart.html">Electrophysiology of Heart In
-                                    Delhi, India</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="/health-failure">Health Failure</a>
-                        <ul class="sub-menu">
-                            <li><a href="medical-management-heart-failure.html">Medical Management of
-                                    Heart Failure in Delhi, India</a></li>
-                            <li><a href="aicd-implantable-defibrillator.html">Automated Implantable Cardioverter
-                                    Defibrillator – AICD</a></li>
-                            <li><a href="crt-d-treatment-cost.html">CRT- D Treatment For Heart &amp; CRT Cost
-                                    in Delhi, India</a></li>
-                            <li><a href="heart-assist-device.html">Heart Assist Device</a></li>
-                            <li><a href="heart-transplant-surgery.html">
-                                    Heart Transplant Surgery in
-                                    Delhi, India
+                <li class="menu-item-has-children">
+                    <a href="/adult-cardiac-disease">Adult Cardiac Disease</a>
+                    <ul class="sub-menu">
+                        <% adultCardiacServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
                                 </a></li>
-                        </ul>
-                    </li>
+                            <% }); %>
+                    </ul>
+                </li>
+                
+                <li class="menu-item-has-children">
+                    <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
+                    <ul class="sub-menu">
+                        <% pediatricCardiacServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
+                
+                <li class="menu-item-has-children">
+                    <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
+                    <ul class="sub-menu">
+                        <% cardiacArrhythmiaServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
+                
+                <li class="menu-item-has-children">
+                    <a href="/heart-failure">Heart Failure</a>
+                    <ul class="sub-menu">
+                        <% heartFailureServices.forEach(service=> { %>
+                            <li><a href="/service-details/<%= service._id %>">
+                                    <%= service.name %>
+                                </a></li>
+                            <% }); %>
+                    </ul>
+                </li>
     
                 </ul>
             </div>
@@ -192,53 +193,49 @@
                                             <a href="/about">About</a>
                                         </li>
                                         <li class="menu-item-has-children">
-                                            <a href="/adult-cardiac-disease">Adult cardiac disease</a>
+                                            <a href="/adult-cardiac-disease">Adult Cardiac Disease</a>
                                             <ul class="sub-menu">
-                                                <li><a href="./coronary-artery-diseases.html.html">Coronary Artery
-                                                        Diseases</a></li>
-                                                <li><a href="./valvular-heart-diseases.html">Valvular Heart Diseases</a>
-                                                </li>
+                                                <% adultCardiacServices.forEach(service=> { %>
+                                                    <li><a href="/service-details/<%= service._id %>">
+                                                            <%= service.name %>
+                                                        </a></li>
+                                                    <% }); %>
                                             </ul>
                                         </li>
+                                        
                                         <li class="menu-item-has-children">
                                             <a href="/pediatric-cardiac-disease">Pediatric Cardiac Disease</a>
                                             <ul class="sub-menu">
-                                                <li><a href="acyanotic-heart-diseases.html">Acyanotic Heart Diseases</a>
-                                                </li>
-                                                <li><a href="cyanotic-heart-diseases.html">Cyanotic Heart Diseases</a></li>
+                                                <% pediatricCardiacServices.forEach(service=> { %>
+                                                    <li><a href="/service-details/<%= service._id %>">
+                                                            <%= service.name %>
+                                                        </a></li>
+                                                    <% }); %>
                                             </ul>
                                         </li>
+                                        
                                         <li class="menu-item-has-children">
                                             <a href="/cardiac-arrhythmia">Cardiac Arrhythmia</a>
                                             <ul class="sub-menu">
-                                                <li><a href="atrial-fibrillation-treatment.html">Atrial Fibrillation
-                                                        Treatment in India (AF)</a></li>
-                                                <li><a href="ventricular-tachycardia-treatment.html">Ventricular Tachycardia
-                                                        &amp;
-                                                        Supraventricular Tachycardia Treatment in India</a></li>
-                                                <li><a href="conduction-blocks.html">Conduction Blocks</a></li>
-                                                <li><a href="electrophysiology-heart.html">Electrophysiology of Heart In
-                                                        Delhi, India</a></li>
+                                                <% cardiacArrhythmiaServices.forEach(service=> { %>
+                                                    <li><a href="/service-details/<%= service._id %>">
+                                                            <%= service.name %>
+                                                        </a></li>
+                                                    <% }); %>
                                             </ul>
                                         </li>
+                                        
                                         <li class="menu-item-has-children">
-                                            <a href="/health-failure">Health Failure</a>
+                                            <a href="/heart-failure">Heart Failure</a>
                                             <ul class="sub-menu">
-                                                <li><a href="medical-management-heart-failure.html">Medical Management of
-                                                        Heart Failure in Delhi, India</a></li>
-                                                <li><a href="aicd-implantable-defibrillator.html">Automated Implantable
-                                                        Cardioverter
-                                                        Defibrillator – AICD</a></li>
-                                                <li><a href="crt-d-treatment-cost.html">CRT- D Treatment For Heart &amp; CRT
-                                                        Cost
-                                                        in Delhi, India</a></li>
-                                                <li><a href="heart-assist-device.html">Heart Assist Device</a></li>
-                                                <li><a href="heart-transplant-surgery.html">
-                                                        Heart Transplant Surgery in
-                                                        Delhi, India
-                                                    </a></li>
+                                                <% heartFailureServices.forEach(service=> { %>
+                                                    <li><a href="/service-details/<%= service._id %>">
+                                                            <%= service.name %>
+                                                        </a></li>
+                                                    <% }); %>
                                             </ul>
                                         </li>
+
                                     </ul>
                                 </nav>
                                 <button class="vs-menu-toggle d-inline-block d-lg-none"><i class="fas fa-bars"></i></button>

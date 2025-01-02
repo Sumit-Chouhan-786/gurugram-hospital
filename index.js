@@ -4,7 +4,8 @@ const path = require("path");
 const session = require("express-session");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const SiteSettingData = require("./common/common");
+const {SiteSettingData} = require("./common/common");
+const {AllServicesData} = require("./common/common");
 require("./db/connection");
 
 // Routes
@@ -39,8 +40,39 @@ app.use(async (req, res, next) => {
     next(); 
   }
 });
+app.use(async (req, res, next) => {
+  try {
+    const allServices = await AllServicesData();
 
-// Configure session management
+    // Filter services by categories
+    const adultCardiacServices = allServices.filter(
+      (service) => service.category === "Adult cardiac disease"
+    );
+    const pediatricCardiacServices = allServices.filter(
+      (service) => service.category === "Pediatric Cardiac Disease"
+    );
+    const cardiacArrhythmiaServices = allServices.filter(
+      (service) => service.category === "Cardiac Arrhythmia"
+    );
+    const heartFailureServices = allServices.filter(
+      (service) => service.category === "Heart Failure"
+    );
+
+    // Pass each filtered category as separate variables to the view
+    res.locals.adultCardiacServices = adultCardiacServices;
+    res.locals.pediatricCardiacServices = pediatricCardiacServices;
+    res.locals.cardiacArrhythmiaServices = cardiacArrhythmiaServices;
+    res.locals.heartFailureServices = heartFailureServices;
+
+    next();
+  } catch (err) {
+    console.error("Error in site settings middleware:", err);
+    next();
+  }
+});
+
+
+
 
 app.use(
   session({
@@ -76,6 +108,10 @@ app.use("/", userRoutes);
 app.use((err, req, res, next) => {
   console.error("Error:", err.message);
   res.status(500).send("Internal Server Error");
+});
+
+app.all("*", (req, res) => {
+  res.render("user-ui/error");
 });
 
 
