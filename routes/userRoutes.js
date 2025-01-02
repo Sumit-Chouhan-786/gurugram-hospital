@@ -1,19 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const getAllTeamsForAbout = require("../controllers/admin/teamController")
+const getAllTeamsForAbout = require("../controllers/admin/teamController");
 const getAllServicesIndex = require("../controllers/admin/servicesController");
 const getAllTestimonialsForIndex = require("../controllers/admin/testimonialController");
 const getAllBlogsForIndex = require("../controllers/admin/blogController");
 const getAllSliderIndex = require("../controllers/admin/sliderController");
-
+const { createAppointment } = require("../controllers/admin/appoinmentController");
 
 // Route to fetch and render all services for the index page
 router.get("/", async (req, res) => {
   try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
-     const teams = await getAllTeamsForAbout.getAllTeamsForAbout(); 
-    const testimonials = await getAllTestimonialsForIndex.getAllTestimonialsForIndex();
+    const teams = await getAllTeamsForAbout.getAllTeamsForAbout();
+    const testimonials =
+      await getAllTestimonialsForIndex.getAllTestimonialsForIndex();
     const blogs = await getAllBlogsForIndex.getAllBlogsForIndex();
     const sliders = await getAllSliderIndex.getAllSliderIndex();
 
@@ -26,7 +27,7 @@ router.get("/", async (req, res) => {
       teams,
     });
   } catch (err) {
-    console.error("Error fetching data for the index page:", err); 
+    console.error("Error fetching data for the index page:", err);
 
     // Render an error page with a friendly message
     res.status(500).render("error", {
@@ -43,7 +44,7 @@ module.exports = router;
 router.get("/blog-details/:id", async (req, res) => {
   try {
     const blogId = req.params.id; // Extract the service ID from the URL
-     const blogs = await getAllBlogsForIndex.getAllBlogsForIndex();
+    const blogs = await getAllBlogsForIndex.getAllBlogsForIndex();
     const blog = await getAllBlogsForIndex.getBlog(blogId); // Fetch specific service by ID
 
     if (!blog) {
@@ -63,7 +64,8 @@ router.get("/blog-details/:id", async (req, res) => {
     // Handle server error
     res.status(500).render("error", {
       title: "Error",
-      message: "An error occurred while loading the blog details. Please try again later.",
+      message:
+        "An error occurred while loading the blog details. Please try again later.",
     });
   }
 });
@@ -93,7 +95,8 @@ router.get("/service-details/:id", async (req, res) => {
     // Handle server error
     res.status(500).render("error", {
       title: "Error",
-      message: "An error occurred while loading the service details. Please try again later.",
+      message:
+        "An error occurred while loading the service details. Please try again later.",
     });
   }
 });
@@ -101,7 +104,7 @@ router.get("/service-details/:id", async (req, res) => {
 router.get("/about", async (req, res) => {
   try {
     const blogs = await getAllBlogsForIndex.getAllBlogsForIndex();
-    const teams = await getAllTeamsForAbout.getAllTeamsForAbout(); 
+    const teams = await getAllTeamsForAbout.getAllTeamsForAbout();
     res.render("../views/user-ui/about.ejs", { teams, blogs });
   } catch (err) {
     console.error(err);
@@ -110,8 +113,8 @@ router.get("/about", async (req, res) => {
 });
 router.get("/team-details/:id", async (req, res) => {
   try {
-    const teamId = req.params.id; 
-    const team = await getAllTeamsForAbout.getTeam(teamId); 
+    const teamId = req.params.id;
+    const team = await getAllTeamsForAbout.getTeam(teamId);
 
     if (!team) {
       // Handle case where no team is found
@@ -137,23 +140,54 @@ router.get("/team-details/:id", async (req, res) => {
     });
   }
 });
-router.get("/blog", (req, res) => {
-  res.render("../views/user-ui/blog.ejs");
+router.get("/blogs", async (req, res) => {
+  try {
+    const blogs = await getAllBlogsForIndex.getAllBlogsForIndex();
+
+    res.render("user-ui/blog", { blogs });
+  } catch (err) {
+    console.error("Error fetching data for the blog page:", err);
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
 });
 
-router.get("/contact", (req, res) => {
-  res.render("../views/user-ui/contact.ejs");
+// Route to display the contact page (appointment form)
+router.get("/contact", async (req, res) => {
+  try {
+    // Fetch doctors (teams) and services
+    const [teams, services] = await Promise.all([
+      getAllTeamsForAbout.getAllTeamsForAbout(),
+      getAllServicesIndex.getAllServicesIndex(),
+    ]);
+
+    // Render the contact page with the services and teams data
+    res.render("user-ui/contact", {
+      title: "Book an Appointment",
+      teams: teams,
+      services: services,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching doctors and services.");
+  }
 });
+
+router.post("/contact", createAppointment);
+
 
 router.get("/adult-cardiac-disease", async (req, res) => {
-    try {
+  try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
 
     // Render the index page with fetched data
     res.render("user-ui/adult-cardiac-disease", { services });
   } catch (err) {
-    console.error("Error fetching data for the index page:", err); 
+    console.error("Error fetching data for the index page:", err);
 
     // Render an error page with a friendly message
     res.status(500).render("error", {
@@ -164,15 +198,15 @@ router.get("/adult-cardiac-disease", async (req, res) => {
   }
 });
 
-router.get("/pediatric-cardiac-disease",async (req, res) => {
-    try {
+router.get("/pediatric-cardiac-disease", async (req, res) => {
+  try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
 
     // Render the index page with fetched data
     res.render("user-ui/pediatric-cardiac-disease", { services });
   } catch (err) {
-    console.error("Error fetching data for the index page:", err); 
+    console.error("Error fetching data for the index page:", err);
 
     // Render an error page with a friendly message
     res.status(500).render("error", {
@@ -182,15 +216,15 @@ router.get("/pediatric-cardiac-disease",async (req, res) => {
     });
   }
 });
-router.get("/cardiac-arrhythmia",async (req, res) => {
-    try {
+router.get("/cardiac-arrhythmia", async (req, res) => {
+  try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
 
     // Render the index page with fetched data
     res.render("user-ui/cardiac-arrhythmia", { services });
   } catch (err) {
-    console.error("Error fetching data for the index page:", err); 
+    console.error("Error fetching data for the index page:", err);
 
     // Render an error page with a friendly message
     res.status(500).render("error", {
@@ -200,15 +234,15 @@ router.get("/cardiac-arrhythmia",async (req, res) => {
     });
   }
 });
-router.get("/health-failure",async (req, res) => {
-    try {
+router.get("/health-failure", async (req, res) => {
+  try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
 
     // Render the index page with fetched data
     res.render("user-ui/health-failure", { services });
   } catch (err) {
-    console.error("Error fetching data for the index page:", err); 
+    console.error("Error fetching data for the index page:", err);
 
     // Render an error page with a friendly message
     res.status(500).render("error", {
@@ -217,10 +251,6 @@ router.get("/health-failure",async (req, res) => {
         "An error occurred while loading the page. Please try again later.",
     });
   }
-  
 });
-
-
-
 
 module.exports = router;

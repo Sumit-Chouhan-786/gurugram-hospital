@@ -5,7 +5,9 @@ const upload = require("../middlewares/multerMiddleware");
 const adminController = require("../controllers/admin/authController");
 const sliderController = require("../controllers/admin/sliderController");
 const blogController = require("../controllers/admin/blogController");
-const enquiriesController = require("../controllers/admin/enquiriesController");
+const {
+  deleteAppointment,
+} = require("../controllers/admin/appoinmentController");
 const imageGalleryController = require("../controllers/admin/imageGalleryController");
 const pagesController = require("../controllers/admin/pagesController");
 const serviceController = require("../controllers/admin/servicesController");
@@ -13,6 +15,7 @@ const testimonialController = require("../controllers/admin/testimonialControlle
 const videoGalleryController = require("../controllers/admin/videoGalleryController");
 const siteSettingController = require("../controllers/admin/siteController");
 const teamController = require("../controllers/admin/teamController")
+const {getAllAppointmentForIndex} = require("../controllers/admin/appoinmentController")
 
 //============================================================================== Public Routes
 router.get("/signup", adminController.renderSignUp);
@@ -127,7 +130,25 @@ router.get("/delete-image-gallery/:id", imageGalleryController.deleteGalleryImag
 //====================================================================== images gallery routes end
 router.get("/add-video-gallery", videoGalleryController.addVideoGalleryPage);
 router.get("/all-video-gallery", videoGalleryController.allVideoGalleryPage);
-router.get("/enquire", enquiriesController.enquiriesPage);
+
+
+
+
+router.get("/enquire", async (req, res) => {
+  try {
+    const enquire = await getAllAppointmentForIndex();
+
+    res.render("admin-ui/allEnquire", { enquire });
+  } catch (err) {
+    console.error("Error fetching data for the enquire page:", err);
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
+});
+router.get("/deleteAppointments/:id", deleteAppointment);
 //========================================================================= blogs routes start
 router.get("/add-blog", blogController.addBlogPage);
 router.post("/add-blog", upload.single("blogImage"), blogController.addBlog);

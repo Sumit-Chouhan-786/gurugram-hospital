@@ -186,6 +186,10 @@ table {
   border-collapse: collapse;
 }
 
+textarea {
+  resize: none;
+}
+
 table th,
 table td {
   border: 1px solid gray;

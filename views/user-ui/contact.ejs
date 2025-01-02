@@ -3,7 +3,7 @@
     Breadcumb
 ============================== -->
     <div class="breadcumb-wrapper ">
-        <div class="parallax" data-parallax-image="assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
+        <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
         <div class="container z-index-common">
             <div class="breadcumb-content">
                 <h1 class="breadcumb-title">Contact Us</h1>
@@ -69,62 +69,64 @@
                 </div>
             </div>
             <div class="col-xl-6 mb-30 pt-30 pt-xl-0">
-                <form action="#" class="form-wrap1 bg-white wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="form-title-box bg-title">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <h2 class="h4 mb-1 text-white">Book An Appointment</h2>
-                                <p class="mb-0 text-white-light">Please Call Us To Ensure</p>
-                            </div>
-                            <div class="col-auto d-none d-sm-block">
-                                <a href="tel:0088123456789" class="ripple-icon style2"><i class="fas fa-phone"></i></a>
-                            </div>
-                        </div>
+        <form action="/contact" method="POST" class="form-wrap1 bg-white wow fadeInUp" data-wow-delay="0.3s">
+            <div class="form-title-box bg-title">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-auto">
+                        <h2 class="h4 mb-1 text-white">Book An Appointment</h2>
+                        <p class="mb-0 text-white-light">Please Call Us To Ensure</p>
                     </div>
-                    <div class="form-box">
-                        <div class="row">
-                            <div class="col-xl-6 form-group">
-                                <select class="form-select style2">
-                                    <option hidden disabled selected>Select Services</option>
-                                    <option>Aerospace Medicine</option>
-                                    <option>Bariatric Surgery</option>
-                                    <option>Infectious Diseases</option>
-                                    <option>Laboratory Medicine</option>
-                                </select>
-                            </div>
-                            <div class="col-xl-6 form-group">
-                                <select class="form-select style2">
-                                    <option hidden disabled selected>Choose Doctor</option>
-                                    <option>Aerospace Medicine</option>
-                                    <option>Bariatric Surgery</option>
-                                    <option>Infectious Diseases</option>
-                                    <option>Laboratory Medicine</option>
-                                </select>
-                            </div>
-                            <div class="col-xl-6 form-group">
-                                <input type="text" class="form-control  style2" placeholder="Your Name">
-                                <i class="fal small fa-user"></i>
-                            </div>
-                            <div class="col-xl-6 form-group">
-                                <input type="email" class="form-control  style2" placeholder="Email Address">
-                                <i class="fal small fa-envelope"></i>
-                            </div>
-                            <div class="col-xl-6 form-group">
-                                <input type="number" class="form-control  style2" placeholder="Your Phone">
-                                <i class="fal small fa-phone"></i>
-                            </div>
-                            <div class="col-xl-6 form-group">
-                                <input type="text" class="dateTime-pick form-control  style2"
-                                    placeholder="Select Date & Time">
-                                <i class="fal small fa-calendar-alt"></i>
-                            </div>
-                            <div class="col-xl-12 text-center">
-                                <button type="submit" class="vs-btn style2">Make Appointment<i
-                                        class="far fa-calendar-alt"></i></button>
-                            </div>
-                        </div>
+                    <div class="col-auto d-none d-sm-block">
+                        <a href="tel:0088123456789" class="ripple-icon style2"><i class="fas fa-phone"></i></a>
                     </div>
-                </form>
+                </div>
+            </div>
+            <div class="form-box">
+                <div class="row">
+                    <div class="col-xl-6 form-group">
+                        <select name="services" class="form-select style2" required>
+                            <option hidden disabled selected>Select Services</option>
+                            <% services.forEach((service)=> { %>
+                                <option value="<%= service._id %>">
+                                    <%= service.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <select name="teams" class="form-select style2" required>
+                            <option hidden disabled selected>Choose Doctor</option>
+                            <% teams.forEach((team)=> { %>
+                                <option value="<%= team._id %>">
+                                    <%= team.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="text" name="name" class="form-control style2" placeholder="Your Name" required>
+                        <i class="fal small fa-user"></i>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="email" name="email" class="form-control style2" placeholder="Email Address" required>
+                        <i class="fal small fa-envelope"></i>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="number" name="phone" class="form-control style2" placeholder="Your Phone" required>
+                        <i class="fal small fa-phone"></i>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="date" name="dateAndTime" class="w-100 form-control style2" required>
+                    </div>
+                    <div class="col-xl-12 text-center">
+                        <button type="submit" class="vs-btn style2">Make Appointment <i
+                                class="far fa-calendar-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
             </div>
         </div>
     </div>

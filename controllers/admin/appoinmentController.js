@@ -1,21 +1,20 @@
-const Appointment = require("../models/appointmentModel");
+const Appointment = require("../../models/appoinmentModel");
 
-// ======================================================================== create appointment
+// ======================================================================== Create Appointment
+
 const createAppointment = async (req, res) => {
   try {
-    const { name, email, phone, services, doctor, age } = req.body;
+    console.log("Received form data:", req.body); // Log the incoming data
 
-    // Validation: Check if all fields are provided
-    if (!name || !email || !phone || !services || !doctor || !age) {
+    // Extract fields from the request body
+    const { name, email, phone, services, teams, dateAndTime } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !phone || !services || !teams || !dateAndTime) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    // Validate if the age is a number and greater than 0
-    if (isNaN(age) || age <= 0) {
-      return res.status(400).json({ message: "Please provide a valid age." });
-    }
-
-    // Check if the email already exists in the database
+    // Check if an appointment already exists with the same email
     const existingAppointment = await Appointment.findOne({ email });
     if (existingAppointment) {
       return res.status(400).json({
@@ -23,51 +22,49 @@ const createAppointment = async (req, res) => {
       });
     }
 
-    // Create a new appointment
+    // Create new appointment
     const newAppointment = new Appointment({
       name,
       email,
       phone,
       services,
-      doctor,
-      age,
+      teams, // Correct field name
+      dateAndTime, // Adding the dateAndTime field
     });
 
-    // Save the new appointment to the database
+    // Save the new appointment
     await newAppointment.save();
 
-    // Redirect after successful creation
-    res.redirect("/appointment");
+    console.log("Appointment created successfully!");
+    return res.redirect("/contact");
   } catch (error) {
     console.error("Error details:", error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while creating the appointment." });
+    return res.status(500).json({
+      message: "An error occurred while creating the appointment.",
+    });
   }
 };
 
-// ======================================================================== show all appointments in admin dashboard
+
+// ======================================================================== Show All Appointments in Admin Dashboard
 const getAllAppointmentForIndex = async () => {
-  try {
-    return await Appointment.find().sort({ createdAt: -1 }); // Sort by creation date descending
-  } catch (err) {
-    throw new Error("Error fetching appointments");
-  }
+  return await Appointment.find()
+    .populate("services", "name") 
+    .populate("teams", "name"); 
 };
 
-// ======================================================================== delete an appointment
+// ======================================================================== Delete Appointment
 const deleteAppointment = async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Find and delete the appointment by its ID
     const deletedAppointment = await Appointment.findByIdAndDelete(id);
 
     if (!deletedAppointment) {
       return res.status(404).json({ message: "Appointment not found." });
     }
 
-    // Fetch all remaining appointments after deletion
+    // Get updated list of appointments
     const appointments = await Appointment.find();
 
     // Store data in session
@@ -77,13 +74,13 @@ const deleteAppointment = async (req, res) => {
       message: "Appointment deleted successfully.",
     };
 
-    // Redirect after successful deletion
-    res.redirect("/admin/allAppointment");
+    // Redirect to the appointments list
+    res.redirect("/admin/enquire");
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while deleting the appointment." });
+    res.status(500).json({
+      message: "An error occurred while deleting the appointment.",
+    });
   }
 };
 
