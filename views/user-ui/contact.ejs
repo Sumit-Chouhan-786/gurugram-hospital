@@ -69,7 +69,8 @@
                 </div>
             </div>
             <div class="col-xl-6 mb-30 pt-30 pt-xl-0">
-        <form action="/contact" method="POST" class="form-wrap1 bg-white wow fadeInUp" data-wow-delay="0.3s">
+        <form action="/contact" method="POST" class="form-wrap1 bg-white wow fadeInUp" data-wow-delay="0.3s"
+            onsubmit="return validateForm(event)">
             <div class="form-title-box bg-title">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-auto">
@@ -77,15 +78,15 @@
                         <p class="mb-0 text-white-light">Please Call Us To Ensure</p>
                     </div>
                     <div class="col-auto d-none d-sm-block">
-                        <a href="tel:0088123456789" class="ripple-icon style2"><i class="fas fa-phone"></i></a>
+                        <a href="tel:<%= siteSettings[0].number %>" class="ripple-icon style2"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>
             <div class="form-box">
                 <div class="row">
                     <div class="col-xl-6 form-group">
-                        <select name="services" class="form-select style2" required>
-                            <option hidden disabled selected>Select Services</option>
+                        <select name="services" id="services" class="form-select style2" required>
+                            <option hidden disabled selected value="">Select Services</option>
                             <% services.forEach((service)=> { %>
                                 <option value="<%= service._id %>">
                                     <%= service.name %>
@@ -94,8 +95,8 @@
                         </select>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <select name="teams" class="form-select style2" required>
-                            <option hidden disabled selected>Choose Doctor</option>
+                        <select name="teams" id="teams" class="form-select style2" required>
+                            <option hidden disabled selected value="">Choose Doctor</option>
                             <% teams.forEach((team)=> { %>
                                 <option value="<%= team._id %>">
                                     <%= team.name %>
@@ -104,23 +105,26 @@
                         </select>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <input type="text" name="name" class="form-control style2" placeholder="Your Name" required>
+                        <input type="text" id="name" name="name" class="form-control style2" placeholder="Your Name" required />
                         <i class="fal small fa-user"></i>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <input type="email" name="email" class="form-control style2" placeholder="Email Address" required>
+                        <input type="email" id="email" name="email" class="form-control style2" placeholder="Email Address"
+                            required />
                         <i class="fal small fa-envelope"></i>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <input type="number" name="phone" class="form-control style2" placeholder="Your Phone" required>
+                        <input type="number" id="phone" name="phone" class="form-control style2" placeholder="Your Phone"
+                            required />
                         <i class="fal small fa-phone"></i>
                     </div>
                     <div class="col-xl-6 form-group">
-                        <input type="date" name="dateAndTime" class="w-100 form-control style2" required>
+                        <input type="date" id="dateAndTime" name="dateAndTime" class="w-100 form-control style2" required />
                     </div>
                     <div class="col-xl-12 text-center">
-                        <button type="submit" class="vs-btn style2">Make Appointment <i
-                                class="far fa-calendar-alt"></i></button>
+                        <button type="submit" class="vs-btn style2">
+                            Make Appointment <i class="far fa-calendar-alt"></i>
+                        </button>
                     </div>
                 </div>
             </div>

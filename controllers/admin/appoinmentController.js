@@ -1,7 +1,7 @@
+const { v4: uuidv4 } = require("uuid");
 const Appointment = require("../../models/appoinmentModel");
 
 // ======================================================================== Create Appointment
-
 const createAppointment = async (req, res) => {
   try {
     console.log("Received form data:", req.body); // Log the incoming data
@@ -14,43 +14,44 @@ const createAppointment = async (req, res) => {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    // Check if an appointment already exists with the same email
-    const existingAppointment = await Appointment.findOne({ email });
-    if (existingAppointment) {
-      return res.status(400).json({
-        message: "This email is already registered for an appointment.",
-      });
-    }
+    // Generate a unique UUID for each appointment
+    const appointmentUuid = uuidv4();
 
-    // Create new appointment
+    // Create a new appointment with UUID
     const newAppointment = new Appointment({
+      uuid: appointmentUuid, // Assign UUID here
       name,
       email,
       phone,
       services,
-      teams, // Correct field name
-      dateAndTime, // Adding the dateAndTime field
+      teams,
+      dateAndTime,
     });
 
     // Save the new appointment
     await newAppointment.save();
 
     console.log("Appointment created successfully!");
-    return res.redirect("/contact");
+    return res.redirect("/"); // Redirect to homepage or another relevant page
   } catch (error) {
-    console.error("Error details:", error);
+    console.error("Error creating appointment:", error);
     return res.status(500).json({
       message: "An error occurred while creating the appointment.",
+      error: error.message,
     });
   }
 };
-
-
-// ======================================================================== Show All Appointments in Admin Dashboard
+// ======================================================================== Show All Appointments for Index
 const getAllAppointmentForIndex = async () => {
-  return await Appointment.find()
-    .populate("services", "name") 
-    .populate("teams", "name"); 
+  try {
+    const appointments = await Appointment.find()
+      .populate("services", "name") // Populate service name
+      .populate("teams", "name"); // Populate team (doctor) name
+    return appointments;
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    throw new Error("Failed to fetch appointments.");
+  }
 };
 
 // ======================================================================== Delete Appointment
@@ -64,26 +65,31 @@ const deleteAppointment = async (req, res) => {
       return res.status(404).json({ message: "Appointment not found." });
     }
 
-    // Get updated list of appointments
-    const appointments = await Appointment.find();
+    console.log("Appointment deleted successfully:", id);
 
-    // Store data in session
+    // Get updated list of appointments
+    const appointments = await Appointment.find()
+      .populate("services", "name")
+      .populate("teams", "name");
+
+    // Store data in session (if applicable)
     req.session.appointments = appointments;
     req.session.message = {
       type: "success",
-      message: "Appointment deleted successfully.",
+      content: "Appointment deleted successfully.",
     };
 
     // Redirect to the appointments list
-    res.redirect("/admin/enquire");
+    return res.redirect("/admin/enquire");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
+    console.error("Error deleting appointment:", error);
+    return res.status(500).json({
       message: "An error occurred while deleting the appointment.",
     });
   }
 };
 
+// ======================================================================== Export Functions
 module.exports = {
   createAppointment,
   getAllAppointmentForIndex,

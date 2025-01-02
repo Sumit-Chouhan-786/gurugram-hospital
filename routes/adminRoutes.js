@@ -132,7 +132,7 @@ router.get("/add-video-gallery", videoGalleryController.addVideoGalleryPage);
 router.get("/all-video-gallery", videoGalleryController.allVideoGalleryPage);
 
 
-
+//============================================================================== enquire routes start
 
 router.get("/enquire", async (req, res) => {
   try {
@@ -149,6 +149,8 @@ router.get("/enquire", async (req, res) => {
   }
 });
 router.get("/deleteAppointments/:id", deleteAppointment);
+//============================================================================== enquire routes end
+
 //========================================================================= blogs routes start
 router.get("/add-blog", blogController.addBlogPage);
 router.post("/add-blog", upload.single("blogImage"), blogController.addBlog);

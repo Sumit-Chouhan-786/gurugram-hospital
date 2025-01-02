@@ -37,8 +37,9 @@ router.get("/", async (req, res) => {
     });
   }
 });
+router.post("/", createAppointment);
 
-module.exports = router;
+
 
 // Route to fetch and render details for a specific service
 router.get("/blog-details/:id", async (req, res) => {
@@ -241,6 +242,25 @@ router.get("/health-failure", async (req, res) => {
 
     // Render the index page with fetched data
     res.render("user-ui/health-failure", { services });
+  } catch (err) {
+    console.error("Error fetching data for the index page:", err);
+
+    // Render an error page with a friendly message
+    res.status(500).render("error", {
+      title: "Error",
+      message:
+        "An error occurred while loading the page. Please try again later.",
+    });
+  }
+});
+
+router.get("/teams", async (req, res) => {
+  try {
+    // Fetch services and testimonials asynchronously
+    const teams = await getAllTeamsForAbout.getAllTeamsForAbout();
+
+    // Render the index page with fetched data
+    res.render("user-ui/teams", { teams });
   } catch (err) {
     console.error("Error fetching data for the index page:", err);
 

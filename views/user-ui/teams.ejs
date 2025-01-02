@@ -1,0 +1,53 @@
+<%- include('../layout/ui-header.ejs') %>
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper ">
+        <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
+        <div class="container z-index-common">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">Our Doctors</h1>
+                <div class="breadcumb-menu-wrap">
+                    <i class="far fa-home-lg"></i>
+                    <ul class="breadcumb-menu">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">Our Doctors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+    Team Area
+    ==============================-->
+    <section class="vs-team-wrapper space">
+        <div class="container">
+            <div class="row ">
+                <% teams.forEach((team)=> { %>
+                    <div class="col-md-6 col-xl-4 mb-30 wow fadeInUp">
+                        <div class="team-card">
+                            <div class="team-head">
+                                <!-- Dynamically set the image source -->
+                                <img style="max-height: 400px;min-height: 400px;" src="/uploads/<%= team.teamImage %>"
+                                    alt="<%= team.name %>" class="w-100 object_cover">
+                            </div>
+                            <div class="team-body pt-3">
+                                <!-- Dynamically set the team member's name -->
+                                <h3 class="h4 mb-0"><a href="team-details/<%= team._id %>" class="text-reset">
+                                        <%= team.name %>
+                                    </a></h3>
+                                <!-- Dynamically set the specialization -->
+                                <p class="fs-xs degi text-theme mt-1">
+                                    <%= team.specList %>
+                                </p>
+                                <!-- Dynamically set the read more link -->
+                                <a href="team-details/<%= team._id %>">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+            
+        </div>
+    </section>
+<%- include('../layout/ui-footer.ejs') %>

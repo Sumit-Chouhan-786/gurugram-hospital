@@ -218,12 +218,12 @@
                                 <td>
                                     <%= appointment.phone %>
                                 </td>
-                                <td>
-                                    <%= appointment.services ? appointment.services.name : '' %>
-                                </td> <!-- Display service name -->
-                                <td>
-                                    <%= appointment.teams ? appointment.teams.name : '' %>
-                                </td> <!-- Display doctor name -->
+                            <td>
+                                <%= appointment.services ? appointment.services.name : 'Not Available' %>
+                            </td> <!-- Service name -->
+                            <td>
+                                <%= appointment.teams ? appointment.teams.name : 'Not Available' %>
+                            </td>
                                 <td>
                                     <%= appointment.dateAndTime %>
                                 </td>
