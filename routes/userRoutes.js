@@ -241,7 +241,7 @@ router.get("/heart-failure", async (req, res) => {
     const services = await getAllServicesIndex.getAllServicesIndex();
 
     // Render the index page with fetched data
-    res.render("user-ui/health-failure", { services });
+    res.render("user-ui/heart-failure", { services });
   } catch (err) {
     console.error("Error fetching data for the index page:", err);
 
