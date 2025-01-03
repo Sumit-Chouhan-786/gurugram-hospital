@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>
-    <%= blog.seoTitle %>
+    <%= seoTitle || 'Dynamic Page' %>
 </title>
-<meta name="author" content="Vecuro">
-<meta name="description" content="<%- blog.seoDescription %>">
-<meta name="keywords" content="<%= blog.seoKeywords %>">
-<meta name="robots" content="NOINDEX,NOFOLLOW">
+    <meta name="author" content="Vecuro">
+    <meta name="description" content="<%= seoDescription || '' %>">
+    <meta name="keywords" content="<%= seoKeywords || '' %>">
+    <meta name="robots" content="NOINDEX,NOFOLLOW">
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,13 +20,15 @@
 	   Google Web Fonts
 	============================== -->
     <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;family=Quicksand:wght@400;700&amp;family=Roboto:wght@400;500;700&amp;display=swap"
         rel="stylesheet">
 
+
     <!-- Favicons - Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
     <!--==============================
 	    All CSS File
@@ -52,8 +54,6 @@
 </head>
 
 <body>
-
-
     <!--==============================
              Preloader
           ==============================-->
@@ -249,74 +249,38 @@
             </div>
         </div>
     </header>
-    <!--==============================
-    Breadcumb
+        <!--==============================
+    Breadcumb   
 ============================== -->
     <div class="breadcumb-wrapper ">
         <div class="parallax" data-parallax-image="/assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
         <div class="container z-index-common">
             <div class="breadcumb-content">
-                <h1 class="breadcumb-title">Blog Details</h1>
+                <h1 class="breadcumb-title"><%= heading%></h1>
                 <div class="breadcumb-menu-wrap">
                     <i class="far fa-home-lg"></i>
-                    <ul class="breadcumb-menu">
+                    <ul class="breadcumb-menu"> 
                         <li><a href="/">Home</a></li>
-                        <li class="active">Blog Details</li>
+                        <li class="active">Adult cardiac disease</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <!--==============================
-        Blog Area
+    Service Area
     ==============================-->
-    <section class="vs-blog-wrapper blog-details space-top space-md-bottom">
+    <section class="vs-service-wrapper space-top space-md-bottom">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="vs-blog blog-single">
-                        <div class="blog-img">
-                            <img style="max-height: 500px;" class="w-100" src="/uploads/<%= blog.blogImage %>"
-                                alt="Blog Image">
-                        </div>
-                        <div class="blog-content">
-                            <h2 class="blog-title h3">
-                                <%= blog.title %>
-                            </h2>
-                            <p><%- blog.description %></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <aside class="sidebar-area pt-30 pt-lg-0 pl-30">
-                        <div class="widget  ">
-                            <h3 class="widget_title">Popular Posts</h3>
-                            <div class="recent-post-wrap">
-                                <% blogs.slice(0, 3).forEach(blog=> { %>
-                                    <div class="thumb-post">
-                                        <div class="media-img">
-                                            <a href="/blog-details/<%= blog.id %>"><img
-                                                    style="height: 100px;width: 100px;"
-                                                    src="/uploads/<%= blog.blogImage %>" alt="Blog Image"></a>
-                                        </div>
-                                        <div class="media-body ">
-                                            <h4 class="post-title"><a href="/blog-details/<%= blog.id %>">
-                                                    <%= blog.heading %>
-                                                </a></h4>
-                                            <a class="post-date" href="/blog-details/<%= blog.id %>"><i
-                                                    class="fal fa-calendar-alt"></i>
-                                                <%= new Date(blog.createdAt).toLocaleDateString('en-US', {
-                                                    year: 'numeric' , month: 'long' , day: 'numeric' }) %>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <% }); %>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-            </div>
+            <% if (pageImage) { %>
+                <img class="w-100" src="/uploads/<%= pageImage %>" alt="<%= heading || 'Image' %>">
+                <% } %>
+                    <article>
+                        <%- description || 'No description available.' %>
+                    </article>
         </div>
     </section>
+    <!--==============================
+			Footer Area
+	==============================-->
     <%- include('../layout/ui-footer.ejs') %>

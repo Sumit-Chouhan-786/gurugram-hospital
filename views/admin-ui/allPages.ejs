@@ -202,6 +202,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Page url</th>
                                         <th>Heading</th>
                                         <th>Image</th>
                                         <th>Description</th>
@@ -218,9 +219,13 @@
                                             <td>
                                                 <%= page.name %>
                                             </td>
+                                            <td>    
+                                                <a href="/<%= page.url %>"><%= page.url %></a>
+                                            </td>   
                                             <td>
                                                 <%= page.heading %>
                                             </td>
+                                           
                                             <td>
                                                 <img src="/uploads/<%= page.pageImage %>"
                                                     alt="Page Image <%= index + 1 %>" width="150">
