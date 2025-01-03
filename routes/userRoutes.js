@@ -235,7 +235,7 @@ router.get("/cardiac-arrhythmia", async (req, res) => {
     });
   }
 });
-router.get("/health-failure", async (req, res) => {
+router.get("/heart-failure", async (req, res) => {
   try {
     // Fetch services and testimonials asynchronously
     const services = await getAllServicesIndex.getAllServicesIndex();
