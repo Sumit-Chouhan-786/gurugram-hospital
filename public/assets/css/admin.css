@@ -24,6 +24,8 @@
   overflow: hidden;
 }
 .sidebar {
+  position: relative;
+  z-index: 10;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.412);
   padding: 10px;
   background: #f8f9fa;
